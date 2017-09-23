@@ -1,14 +1,14 @@
 
-CFLAGS= -g -std=c++11
+CFLAGS= -g -ggdb -std=c++11 -Wall -Werror
 OBJS=main.o
 TARGET=./main
 
 all: $(TARGET)
 
-%.o : %.cpp
-	g++ -c $(CFLAGS) -o $@ $^
+%.o : %.cpp matrix.h
+	g++ -c $(CFLAGS) -o $@ $(*).cpp
 
-$(TARGET): $(OBJS) matrix.h
+$(TARGET): $(OBJS)
 	g++ $(CFLAGS) -o $@ $(OBJS)
 
 clean:
